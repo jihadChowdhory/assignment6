@@ -29,9 +29,13 @@ const showImages = (images) => {
 }
 
 const getImages = (query) => {
+  toggleSpinner(true);
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
     .then(response => response.json())
-    .then(data => showImages(data.hits))
+    .then(data => {
+      showImages(data.hits);
+      toggleSpinner(false);
+    })
     .catch(err => console.log(err))
 }
 
@@ -133,3 +137,13 @@ document.getElementById("search").addEventListener("keypress", function (event) 
 sliderBtn.addEventListener('click', function () {
   createSlider()
 })
+
+const toggleSpinner = (show) => {
+  const spinner = document.getElementById('loading-spinner');
+  if (show) {
+    spinner.classList.remove('d-none');
+  }
+  else {
+    spinner.classList.add('d-none');
+  }
+}
