@@ -127,10 +127,19 @@ searchBtn.addEventListener('click', function () {
   sliders.length = 0;
 })
 
+// Enter key feature for search button
 document.getElementById("search").addEventListener("keypress", function (event) {
   if (event.key === 'Enter') {
     event.preventDefault();
     document.getElementById("search-btn").click();
+  }
+});
+
+// Space key feature for Create slide button
+document.getElementById("duration").addEventListener("keypress", function (event) {
+  if (event.key === 'e') {
+    event.preventDefault();
+    document.getElementById("create-slider").click();
   }
 });
 
